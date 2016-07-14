@@ -6,8 +6,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_scrollFlags="enterAlwaysCollapsed">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -22,21 +21,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabMode="fixed"
-            app:tabGravity="fill" />
+            app:tabGravity="fill"/>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipChildren="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:clickable="false"
-        android:touchscreenBlocksFocus="false"
-        android:transitionGroup="false"
-        android:nestedScrollingEnabled="false"
-        android:longClickable="false"
-        android:focusableInTouchMode="false"
-        android:focusable="false"
-        android:contextClickable="false" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
 </android.support.design.widget.CoordinatorLayout>
