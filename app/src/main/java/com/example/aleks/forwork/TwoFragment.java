@@ -3,12 +3,10 @@ package com.example.aleks.forwork;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Rect;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -28,16 +26,20 @@ public class TwoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*setRetainInstance(true);*/
     }
+
+/*    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_two, container, false);
-
         RelativeLayout relativeLayout = (RelativeLayout) rootView.findViewById(R.id.rect);
         relativeLayout.addView(new DrawingView(getActivity()));
-
         return rootView;
     }
 
@@ -89,6 +91,7 @@ public class TwoFragment extends Fragment {
             super.onDraw(canvas);
             canvas.drawBitmap(mBitmap, 0, 0, mPaint);
             onDrawLine(canvas);
+            setRetainInstance(true);
         }
 
         protected void init() {
@@ -103,7 +106,6 @@ public class TwoFragment extends Fragment {
             mPaint.setStrokeCap(Paint.Cap.ROUND);
             mPaint.setStrokeWidth(TOUCH_STROKE_WIDTH);
 
-
             mPaintFinal = new Paint(Paint.DITHER_FLAG);
             mPaintFinal.setAntiAlias(true);
             mPaintFinal.setDither(true);
@@ -112,10 +114,6 @@ public class TwoFragment extends Fragment {
             mPaintFinal.setStrokeJoin(Paint.Join.ROUND);
             mPaintFinal.setStrokeCap(Paint.Cap.ROUND);
             mPaintFinal.setStrokeWidth(TOUCH_STROKE_WIDTH);
-        }
-
-        protected void reset() {
-            mPath = new Path();
         }
 
         @Override
@@ -127,7 +125,6 @@ public class TwoFragment extends Fragment {
         }
 
         private void onDrawLine(Canvas canvas) {
-
             float dx = Math.abs(mx - mStartX);
             float dy = Math.abs(my - mStartY);
             if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
@@ -165,18 +162,6 @@ public class TwoFragment extends Fragment {
                     break;
             }
         }
-
-/*        Paint paint = new Paint();
-
-        public DrawingView(Context context) {
-            super(context);
-        }
-        @Override
-        public void onDraw(Canvas canvas) {
-            paint.setColor(Color.GREEN);
-            Rect rect = new Rect(100, 100, 700, 112);
-            canvas.drawRect(rect, paint );
-        }*/
     }
 }
 
